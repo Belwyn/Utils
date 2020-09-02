@@ -68,7 +68,6 @@ namespace Belwyn.Utils {
             }
         }
 
-
         // Returns an available item from the pool, null if none is available
         public T RetrieveItem() {
 
@@ -90,7 +89,7 @@ namespace Belwyn.Utils {
         // Destroy an item on demand
         public void DestroyItem(T item) {
             HideItem(item);
-            RestoreItem(item);
+            StoreItem(item);
         }
 
 
@@ -101,7 +100,7 @@ namespace Belwyn.Utils {
         }
 
         // Restore an item. Remove from used and add to available
-        private void RestoreItem(T item) {
+        private void StoreItem(T item) {
             _usedItems.Remove(item);
             _itemPool.Add(item);
         }
