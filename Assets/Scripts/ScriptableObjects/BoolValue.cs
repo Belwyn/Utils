@@ -7,11 +7,15 @@ using UnityEngine.Events;
 // An scriptable object that stores a bool value, with event functionalities to notify changes.
 // Extends from BaseValue ScriptableObject
 
-[CreateAssetMenu(fileName = "NewBoolValue", menuName = "Game/Bool Value")]
-public class BoolValue : BaseValue<bool> {
+namespace Belwyn.Utils {
 
-    // Value change event
-    private BoolEvent _onValueChange = new BoolEvent();
-    protected override UnityEvent<bool> onValueChange => _onValueChange;
+    [CreateAssetMenu(fileName = "NewBoolValue", menuName = "Game/Bool Value")]
+    public class BoolValue : BaseValue<bool> {
+
+        // Value change event
+        private BoolEvent _onValueChange = new BoolEvent();
+        protected override UnityEvent<bool> onValueChange => _onValueChange;
+
+    } 
 
 }

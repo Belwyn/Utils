@@ -7,28 +7,32 @@ using UnityEngine.Events;
 // Component to watch an IntValue ScriptableObject
 // Extends from BaseValue component
 
-public class IntValueObserver : BaseValueObserver<int> {
+namespace Belwyn.Utils {
 
-    // IntValue to watch
-    [Header("Value")]
-    [SerializeField]
-    private IntValue _value;
-    protected override BaseValue<int> value => _value;
+    public class IntValueObserver : BaseValueObserver<int> {
 
-    // String formatted value
-    [Header("String values")]
-    [SerializeField]
-    protected string _formatted = "{0}";
-    protected override string formatted => _formatted;
+        // IntValue to watch
+        [Header("Value")]
+        [SerializeField]
+        private IntValue _value;
+        protected override BaseValue<int> value => _value;
 
-    // Events exposed
-    [Header("Events")]
-    [SerializeField]
-    private IntEvent _onValueChange;
-    protected override UnityEvent<int> onValueChange => _onValueChange;
+        // String formatted value
+        [Header("String values")]
+        [SerializeField]
+        protected string _formatted = "{0}";
+        protected override string formatted => _formatted;
 
-    [SerializeField]
-    private StringEvent _onValueChangeAsString;
-    protected override StringEvent onValueChangeAsString => _onValueChangeAsString;
+        // Events exposed
+        [Header("Events")]
+        [SerializeField]
+        private IntEvent _onValueChange;
+        protected override UnityEvent<int> onValueChange => _onValueChange;
+
+        [SerializeField]
+        private StringEvent _onValueChangeAsString;
+        protected override StringEvent onValueChangeAsString => _onValueChangeAsString;
+
+    } 
 
 }

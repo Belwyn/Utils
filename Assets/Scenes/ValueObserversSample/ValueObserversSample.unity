@@ -1210,6 +1210,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: {fileID: 11400000, guid: 39008fb5bead67b459fe5c4e36f8ff39, type: 2}
   _formatted: The value is {0}
+  _trueStringValue: verdadero
+  _falseStringValue: falso
   _onValueChange:
     m_PersistentCalls:
       m_Calls:

@@ -7,11 +7,15 @@ using UnityEngine.Events;
 // An scriptable object that stores a float value, with event functionalities to notify changes.
 // Extends from BaseValue ScriptableObject
 
-[CreateAssetMenu(fileName = "NewFloatValue", menuName = "Game/Float Value")]
-public class FloatValue : BaseValue<float> {
+namespace Belwyn.Utils {
 
-    // Value change event
-    private FloatEvent _onValueChange = new FloatEvent();
-    protected override UnityEvent<float> onValueChange => _onValueChange;
+    [CreateAssetMenu(fileName = "NewFloatValue", menuName = "Game/Float Value")]
+    public class FloatValue : BaseValue<float> {
+
+        // Value change event
+        private FloatEvent _onValueChange = new FloatEvent();
+        protected override UnityEvent<float> onValueChange => _onValueChange;
+
+    } 
 
 }

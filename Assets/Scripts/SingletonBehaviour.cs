@@ -6,18 +6,22 @@ using UnityEngine;
 // Abstract component with a default behaviour as a Singleton
 // Stores instance on Awake
 
-public abstract class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour {
+namespace Belwyn.Utils {
 
-    public static T instance { get; private set; }
+    public abstract class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour {
 
-    protected virtual void Awake() {
-        if (instance != null) {
-            Debug.LogWarning(name + " - Singleton instance already exists. This is not permitted ");
-            Destroy(gameObject);
-            return;
+        public static T instance { get; private set; }
+
+        protected virtual void Awake() {
+            if (instance != null) {
+                Debug.LogWarning(name + " - Singleton instance already exists. This is not permitted ");
+                Destroy(gameObject);
+                return;
+            }
+
+            instance = GetComponent<T>();
         }
 
-        instance = GetComponent<T>();
     }
 
 }
