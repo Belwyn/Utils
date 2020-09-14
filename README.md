@@ -13,6 +13,10 @@ The Pool<> abstract class can be inherited with a type of MonoBehaviour. Given a
 ### Singleton Behaviour
 The SingletonBehaviour<> can be inherited with a type of Monobehaviour. This abstract class ensures when Awake() is called that there is only one instance of this component, and can be accessed statically.
 
+### Permanent Gameobject
+The PermanentGameobject component marks the Gameobject as persistent, so it is kept alive between scenes.
+This in conjuction with a SingletonBehaviour can be really useful for creating a manager.
+
 ### Events
 Just some definition of generic events, because unity can't serialize generic classes, so you don't have to declare an IntEvent class to use it in the inspector anymore.
 
