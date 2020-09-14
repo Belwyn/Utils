@@ -5,9 +5,20 @@ using UnityEngine;
 
 namespace Belwyn.Editor.Build {
 
+
+    // Scriptable object for a definition of scripting define symbols for compilation of multiple platforms
+    // Create a new BuildConfiguration asset by right-clicking in the project window
+
     [CreateAssetMenu(fileName = "NewConfiguration", menuName = "Build/Configuration")]
     public class BuildConfiguration : ScriptableObject {
 
+
+        // Struct for the definition of the configuration for a single platform
+        // The Define Symbols list is the list of symbols you want to apply to your Scripting Define Symbols
+        // The bools for testing and shipping builds are used to add those core symbols in addition to the ones you wrote.
+        // This is used for some other utilities of the project that use those symbols
+        // Because the directives are processed at compilation time they have to be written directly in the code
+        // So just mark these values and you don't have to worry about anything!
         [Serializable]
         public struct BuildConfig {
             [SerializeField]
@@ -24,6 +35,7 @@ namespace Belwyn.Editor.Build {
         }
 
 
+        // Base standalone configuration
         [Header("Standalone config")]
         [SerializeField]
         private BuildConfig _standaloneConfig;
@@ -31,8 +43,13 @@ namespace Belwyn.Editor.Build {
 
         [Space()]
 
+
+        // These are for overriding a diferent configuration for specific platfomrs
+        // I only added Android and iOS, add any other you want!
+
         [Header("Overrides")]
 
+        // Android
         [SerializeField]
         private bool _overrideAndroid;
         public bool overrideAndroid => _overrideAndroid;
@@ -43,6 +60,7 @@ namespace Belwyn.Editor.Build {
 
         [Space()]
 
+        // iOS
         [SerializeField]
         private bool _overrideIOS;
         public bool overrideIOS => _overrideIOS;
@@ -50,6 +68,11 @@ namespace Belwyn.Editor.Build {
         [SerializeField]
         private BuildConfig _iOSConfig;
         public BuildConfig iosConfig => _iOSConfig;
+
+
+        //
+        // Add more platforms here!
+        //
 
     }
 
