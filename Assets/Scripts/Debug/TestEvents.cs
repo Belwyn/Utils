@@ -18,10 +18,9 @@ namespace Belwyn.Utils.Test {
             ev = e;
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public void Invoke(T arg) {
-            #if TEST_BUILD
             ev?.Invoke(arg);
-            #endif
         }
 
     }

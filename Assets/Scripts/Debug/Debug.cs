@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Belwyn.Utils {
 
-    // This classes are a implementation of Unity's Debug class, however each call to unity is wrapped with a TEST_BUILD directive
+    // This classes are a implementation of Unity's Debug class, however each method here is 
     // If the TEST_BUILD is not defined the debug calls will not happen, making a non-test build cleaner, and without needing to change your code!
 
     // I've separated it in two classes for better comprehension. Logger is for logging, Debugger is for other debug things.
@@ -12,36 +12,30 @@ namespace Belwyn.Utils {
     public class Debugger {
 
         // Use this method with a lambda [ () => function(); ] to execute it only when testing
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void Invoke(Action action) {
-        #if TEST_BUILD
             action?.Invoke();
-        #endif
         }
 
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void Break() {
-        #if TEST_BUILD
             Debug.Break();
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void ClearDevelopmentConsole() {
-        #if TEST_BUILD
             Debug.ClearDeveloperConsole();
-        #endif
         }
 
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void DrawLine(Vector3 start, Vector3 end, Color color = default, float duration = 0.0f, bool depthTest = true) {
-        #if TEST_BUILD
             Debug.DrawLine(start, end, color, duration, depthTest);
-        #endif
         }
-
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void DrawRay(Vector3 start, Vector3 dir, Color color = default, float duration = 0.0f, bool depthTest = true) {
-        #if TEST_BUILD
             Debug.DrawRay(start, dir, color, duration, depthTest);
-        #endif
         }
 
     }
@@ -50,132 +44,130 @@ namespace Belwyn.Utils {
     public class Logger {
 
     #region Assert
+    
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void Assert(bool condition) {
-        #if TEST_BUILD
             Debug.Assert(condition);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void Assert(bool condition, UnityEngine.Object context) {
-        #if TEST_BUILD
             Debug.Assert(condition, context);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void Assert(bool condition, object message) {
-        #if TEST_BUILD
             Debug.Assert(condition, message);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void Assert(bool condition, object message, UnityEngine.Object context) {
-        #if TEST_BUILD
             Debug.Assert(condition, message, context);
-        #endif
         }
+
     #endregion Assert
 
 
 
 
     #region AssertFormat
+
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void AssertFormat(bool condition, string format, params object[] args) {
-        #if TEST_BUILD
             Debug.AssertFormat(condition, format, args);
-        #endif
         }
 
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void AssertFormat(bool condition, UnityEngine.Object context, string format, params object[] args) {
-        #if TEST_BUILD
             Debug.AssertFormat(condition, context, format, args);
-        #endif
         }
+
     #endregion AssertFormat
 
 
 
 
     #region Log
+
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void Log(object message) {
-        #if TEST_BUILD
             Debug.Log(message);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void Log(object message, UnityEngine.Object context) {
-        #if TEST_BUILD
             Debug.Log(message, context);
-        #endif
         }
+
     #endregion Log
 
 
 
 
     #region LogAssertion
+
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogAssertion(object message) {
-        #if TEST_BUILD
             Debug.LogAssertion(message);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogAssertion(object message, UnityEngine.Object context) {
-        #if TEST_BUILD
             Debug.LogAssertion(message, context);
-        #endif
         }
+
     #endregion
 
 
 
 
     #region LogAssertionFormat
+
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public void LogAssertionFormat(string format, params object[] args) {
-        #if TEST_BUILD
             Debug.LogAssertionFormat(format, args);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public void LogAssertionFormat(UnityEngine.Object context, string format, params object[] args) {
-        #if TEST_BUILD
             Debug.LogAssertionFormat(context, format, args);
-        #endif
         }
+
     #endregion LogAssertionFormat
 
 
 
 
     #region LogError
+
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogError(object message) {
-        #if TEST_BUILD
             Debug.LogError(message);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogError(object message, UnityEngine.Object context) {
-        #if TEST_BUILD
             Debug.LogError(message, context);
-        #endif
         }
+
     #endregion
 
 
 
 
     #region LogErrorFormat
+
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogErrorFormat(string format, params object[] args) {
-        #if TEST_BUILD
             Debug.LogErrorFormat(format, args);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogErrorFormat(UnityEngine.Object context, string format, params object[] args) {
-        #if TEST_BUILD
             Debug.LogErrorFormat(context, format, args);
-        #endif
         }
+
     #endregion LogErrorFormat
 
 
@@ -183,17 +175,17 @@ namespace Belwyn.Utils {
 
 
     #region LogException
+
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogException(Exception exception) {
-        #if TEST_BUILD
             Debug.LogException(exception);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogException(Exception exception, UnityEngine.Object context) {
-        #if TEST_BUILD
             Debug.LogException(exception, context);
-        #endif
         }
+
     #endregion LogException
 
 
@@ -201,23 +193,22 @@ namespace Belwyn.Utils {
 
 
     #region LogFormat
+
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogFormat(string format, params object[] args) {
-        #if TEST_BUILD
             Debug.LogFormat(format, args);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogFormat(UnityEngine.Object context, string format, params object[] args) {
-        #if TEST_BUILD
             Debug.LogFormat(context, format, args);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogFormat(LogType logType, LogOption logOptions, UnityEngine.Object context, string format, params object[] args) {
-        #if TEST_BUILD
             Debug.LogFormat(logType, logOptions, context, format, args);
-        #endif
         }
+
     #endregion LogFormat
 
 
@@ -225,17 +216,17 @@ namespace Belwyn.Utils {
 
 
     #region LogWarning
+
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogWarning(object message) {
-        #if TEST_BUILD
             Debug.LogWarning(message);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogWarning(object message, UnityEngine.Object context) {
-        #if TEST_BUILD
             Debug.LogWarning(message, context);
-        #endif
         }
+
     #endregion LogWarning
 
 
@@ -243,17 +234,17 @@ namespace Belwyn.Utils {
 
 
     #region LogWarningFormat
+
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogWarningFormat(string format, params object[] args) {
-        #if TEST_BUILD
             Debug.LogWarningFormat(format, args);
-        #endif
         }
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         public static void LogWarningFormat(UnityEngine.Object context, string format, params object[] args) {
-        #if TEST_BUILD
             Debug.LogWarningFormat(context, format, args);
-        #endif
         }
+
     #endregion LogWarningFormat
 
     }

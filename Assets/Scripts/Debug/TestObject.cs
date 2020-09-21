@@ -9,10 +9,9 @@ namespace Belwyn.Utils.Test {
 
     public class TestObject : MonoBehaviour {
 
+        [System.Diagnostics.Conditional("TEST_BUILD")]
         private void Awake() {
-        #if !TEST_BUILD
             Destroy(gameObject);
-        #endif
         }
 
     }
