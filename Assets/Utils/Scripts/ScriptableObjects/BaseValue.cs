@@ -9,20 +9,24 @@ using UnityEngine.Events;
 
 namespace Belwyn.Utils {
 
-    public abstract class BaseValue<T> : ScriptableObject {
+    public abstract class BaseValue<T> : ScriptableObject, ISerializationCallbackReceiver {
 
         // Stored value
         [SerializeField]
+        [Delayed]
         [Header("Value (right-click to invoke)")]
         [ContextMenuItem("Invoke Change", "InvokeChange")]
-        protected T _value;
+        protected T _initialValue;
+
+        private T _runtimeValue;
+
 
         // Property for the value. When setted, raises the event.
         public T value {
-            get => _value;
+            get => _runtimeValue;
             set {
-                _value = value;
-                onValueChange.Invoke(_value);
+                _runtimeValue = value;
+                onValueChange.Invoke(_runtimeValue);
             }
         }
 
@@ -30,13 +34,23 @@ namespace Belwyn.Utils {
         protected abstract UnityEvent<T> onValueChange { get; }
 
 
+        // ISerializationCallbackReceiver implementation
+        // After serialization, store value in a runtiem vatiable to avoid writing on disk
+        public void OnAfterDeserialize()
+        {
+		    _runtimeValue = _initialValue;
+        }
+
+        public void OnBeforeSerialize() {
+        }
+
 
         ///// Methods
 
         // Editor invoke value change
         //[ContextMenu("Invoke change")]
         virtual protected void InvokeChange() {
-            value = _value;
+            value = _initialValue;
         }
 
 

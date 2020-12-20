@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9067b2782fb53f54d9e154809447ebed, type: 3}
   m_Name: NewStringValue
   m_EditorClassIdentifier: 
-  _value: This is a string value!
+  _initialValue: This is a string value!
